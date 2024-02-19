@@ -1,4 +1,9 @@
 #include "systemcalls.h"
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 /**
  * @param cmd the command to execute with system()
@@ -16,8 +21,13 @@ bool do_system(const char *cmd)
  *   and return a boolean true if the system() call completed with success
  *   or false() if it returned a failure
 */
-
-    return true;
+    int returncode;
+    returncode = system(cmd);
+    if (returncode == -1){
+        return false;
+    } else if (returncode == 0){
+	return true;
+    } else {exit(EXIT_SUCCESS);}   
 }
 
 /**
@@ -58,6 +68,24 @@ bool do_exec(int count, ...)
  *   as second argument to the execv() command.
  *
 */
+    pid_t process_id;
+    int status;
+    process_id = fork();
+    if(process_id == -1){ return false;} 
+    else if (process_id == 0){
+	    status = execv(command[0],command);
+	    if (status == -1){
+	    	exit(EXIT_FAILURE);
+	    }
+	    else {wait(&status);}
+    }
+    if (wait(&status) == -1){
+	    return false;
+    }
+    if (WIFEXITED(status)){ 
+	    if (WEXITSTATUS(status)){return false;}
+    }
+    else {return false;}
 
     va_end(args);
 
@@ -92,7 +120,32 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *   The rest of the behaviour is same as do_exec()
  *
 */
+    
+    pid_t process_id;
+    int status;
+    int fd = open(outputfile, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+    if (fd <= 0) { perror("open"); abort(); }
+    switch (process_id = fork()){
+	case -1: return false;
+	case 0:
+		 if (dup2(fd, 1) < 0) { perror("dup2"); abort(); }
+		 close(fd);
+		 if( execv(command[0],command) == -1){
+    		 	close(fd); return false;	
+		 }
+		 int child_proc = execv(command[0],command);
+            	 if (child_proc == -1 || child_proc == 2){
+                 close(fd);return false;
+            	 }
+            	 else {close(fd); return true;}
 
+	default:
+		close(fd);
+    }
+    if (wait(&status) == -1){
+	    return false;
+    }
+    close(fd);
     va_end(args);
 
     return true;
