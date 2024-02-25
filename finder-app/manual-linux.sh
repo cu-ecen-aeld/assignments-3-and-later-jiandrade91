@@ -35,14 +35,15 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
     git checkout ${KERNEL_VERSION}
 
     # TODO: Add your kernel build steps here
-    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- mrproper
-    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
-    make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- all
-    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules
-    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- mrproper # Clean the kernel build tree
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig # For the "vir" arm dev board
+    make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- all # build a kernel image for booting QEMU
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules # build any kernel modules
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs # build the devicetree
 fi
 
-echo "Adding the Image in outdir"
+echo "Adding the Image in outdir" # To linux-stable/arch/arm64/boot/Image??
+cp ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/
 
 echo "Creating the staging directory for the root filesystem"
 cd "$OUTDIR"
@@ -53,12 +54,11 @@ then
 fi
 
 # TODO: Create necessary base directories
-
 mkdir -p rootfs
 cd rootfs
-mkdir -p bin dev etc home lib lib64 proc sys tmp usr var
-mkdir -p usr/bin usr/lib usr/sbin
-mkdir -p var/log
+mkdir -p bin dev etc home lib lib64 proc sbin sys tmp usr var 
+mkdir -p usr/bin usr/lib usr/sbin 
+mkdir -p  var/log 
 
 cd "$OUTDIR"
 if [ ! -d "${OUTDIR}/busybox" ]
@@ -80,49 +80,37 @@ make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
 make CONFIG_PREFIX="$OUTDIR"/rootfs ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install
 cd "${OUTDIR}/rootfs"
 
-
 echo "Library dependencies"
+# Need to change directories back to OUTDIR/rootfs
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
-# TODO: Add library dependencies to rootfs
-
+# TODO: Add library dependencies to rootfs. Copy them over from sysroot
 export SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
-
-sudo cp -r $SYSROOT/lib/* ${OUTDIR}/rootfs/lib
-sudo cp -r $SYSROOT/lib/ld-linux-aarch64.so.1 ${OUTDIR}/rootfs/lib
-sudo cp -r $SYSROOT/lib64/* ${OUTDIR}/rootfs/lib64
-sudo cp -r $SYSROOT/lib64/libm.so.6 ${OUTDIR}/rootfs/lib64
-sudo cp -r $SYSROOT/lib64/libresolv.so.2 ${OUTDIR}/rootfs/lib64
-sudo cp -r $SYSROOT/lib64/libc.so.6 ${OUTDIR}/rootfs/lib64
-
+sudo cp -r $SYSROOT/lib64/* "${OUTDIR}/rootfs/lib64"
+sudo cp -r $SYSROOT/lib/* "${OUTDIR}/rootfs/lib"
 # TODO: Make device nodes
-
+# cd "${OUTDIR}"/rootfs
 sudo mknod -m 666 dev/null c 1 3
-sudo mknod -m 622 dev/console c 5 1
+sudo mknod -m 666 dev/console c 5 1 
 
-# TODO: Clean and build the writer utility
+# TODO: Clean and build the writer utility in finder-app
 cd "$FINDER_APP_DIR"
 make clean
 make CROSS_COMPILE=$CROSS_COMPILE
 
-
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
-
-mkdir -p ${OUTDIR}/rootfs/home/conf
-cp autorun-qemu.sh finder.sh finder-test.sh writer ${OUTDIR}/rootfs/home
-cp ${FINDER_APP_DIR}/conf/username.txt ${OUTDIR}/rootfs/home/conf
-cp ${FINDER_APP_DIR}/conf/assignment.txt ${OUTDIR}/rootfs/home/conf
+mkdir "$OUTDIR"/rootfs/home/conf
+cp finder.sh finder-test.sh writer autorun-qemu.sh "$OUTDIR"/rootfs/home
+cp conf/assignment.txt "$OUTDIR"/rootfs/home/conf
+cp conf/username.txt "$OUTDIR"/rootfs/home/conf
 
 # TODO: Chown the root directory
-
-cd ${OUTDIR}/rootfs
+cd "$OUTDIR"/rootfs
 sudo chown -R root:root *
 
 # TODO: Create initramfs.cpio.gz
-
-find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
-cd ${OUTDIR}
-gzip -f ${OUTDIR}/initramfs.cpio
-
+find . | cpio -H newc -ov --owner root:root > "$OUTDIR"/initramfs.cpio
+cd "$OUTDIR"
+gzip -f "$OUTDIR"/initramfs.cpio
