@@ -1,9 +1,12 @@
 #include "systemcalls.h"
+<<<<<<< HEAD
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+=======
+>>>>>>> assignments-base/assignment4
 
 /**
  * @param cmd the command to execute with system()
@@ -21,6 +24,7 @@ bool do_system(const char *cmd)
  *   and return a boolean true if the system() call completed with success
  *   or false() if it returned a failure
 */
+<<<<<<< HEAD
     int returncode;
     returncode = system(cmd);
     if (returncode == -1){
@@ -28,6 +32,10 @@ bool do_system(const char *cmd)
     } else if (returncode == 0){
 	return true;
     } else {exit(EXIT_SUCCESS);}   
+=======
+
+    return true;
+>>>>>>> assignments-base/assignment4
 }
 
 /**
@@ -68,6 +76,7 @@ bool do_exec(int count, ...)
  *   as second argument to the execv() command.
  *
 */
+<<<<<<< HEAD
     pid_t process_id;
     int status;
     process_id = fork();
@@ -86,6 +95,8 @@ bool do_exec(int count, ...)
 	    if (WEXITSTATUS(status)){return false;}
     }
     else {return false;}
+=======
+>>>>>>> assignments-base/assignment4
 
     va_end(args);
 
@@ -120,6 +131,7 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *   The rest of the behaviour is same as do_exec()
  *
 */
+<<<<<<< HEAD
     
     pid_t process_id;
     int status;
@@ -146,6 +158,9 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
 	    return false;
     }
     close(fd);
+=======
+
+>>>>>>> assignments-base/assignment4
     va_end(args);
 
     return true;

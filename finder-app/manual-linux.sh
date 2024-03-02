@@ -35,11 +35,14 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
     git checkout ${KERNEL_VERSION}
 
     # TODO: Add your kernel build steps here
+<<<<<<< HEAD
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- mrproper
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
     make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- all
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs
+=======
+>>>>>>> assignments-base/assignment4
 fi
 
 echo "Adding the Image in outdir"
@@ -54,12 +57,15 @@ fi
 
 # TODO: Create necessary base directories
 
+<<<<<<< HEAD
 mkdir -p rootfs
 cd rootfs
 mkdir -p bin dev etc home lib lib64 proc sys tmp usr var
 mkdir -p usr/bin usr/lib usr/sbin
 mkdir -p var/log
 
+=======
+>>>>>>> assignments-base/assignment4
 cd "$OUTDIR"
 if [ ! -d "${OUTDIR}/busybox" ]
 then
@@ -67,19 +73,25 @@ git clone git://busybox.net/busybox.git
     cd busybox
     git checkout ${BUSYBOX_VERSION}
     # TODO:  Configure busybox
+<<<<<<< HEAD
     make distclean
     make defconfig
+=======
+>>>>>>> assignments-base/assignment4
 else
     cd busybox
 fi
 
 # TODO: Make and install busybox
+<<<<<<< HEAD
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} distclean
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
 make CONFIG_PREFIX="$OUTDIR"/rootfs ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install
 cd "${OUTDIR}/rootfs"
 
+=======
+>>>>>>> assignments-base/assignment4
 
 echo "Library dependencies"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
@@ -87,6 +99,7 @@ ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
 # TODO: Add library dependencies to rootfs
 
+<<<<<<< HEAD
 export SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
 
 sudo cp -r $SYSROOT/lib/* ${OUTDIR}/rootfs/lib
@@ -106,10 +119,16 @@ cd "$FINDER_APP_DIR"
 make clean
 make CROSS_COMPILE=$CROSS_COMPILE
 
+=======
+# TODO: Make device nodes
+
+# TODO: Clean and build the writer utility
+>>>>>>> assignments-base/assignment4
 
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
 
+<<<<<<< HEAD
 mkdir -p ${OUTDIR}/rootfs/home/conf
 cp autorun-qemu.sh finder.sh finder-test.sh writer ${OUTDIR}/rootfs/home
 cp ${FINDER_APP_DIR}/conf/username.txt ${OUTDIR}/rootfs/home/conf
@@ -126,3 +145,8 @@ find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 cd ${OUTDIR}
 gzip -f ${OUTDIR}/initramfs.cpio
 
+=======
+# TODO: Chown the root directory
+
+# TODO: Create initramfs.cpio.gz
+>>>>>>> assignments-base/assignment4

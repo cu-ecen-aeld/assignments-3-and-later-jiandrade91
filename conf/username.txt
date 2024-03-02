@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 jiandrade91
+=======
+your-github-username-here-in-conf-file
+>>>>>>> assignments-base/assignment4
