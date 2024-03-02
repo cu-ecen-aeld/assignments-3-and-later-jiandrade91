@@ -18657,3 +18657,176 @@ finder-app execution complete, dropping to terminal
 ~/ecea5305/week2/assignment-autotest/test/assignment3 ~/ecea5305/week2
 Test of assignment assignment3 complete with success
 qemu-system-aarch64: terminating on signal 15 from pid 319268 (<unknown process>)
+Running test with user test
+CMake Error: The current CMakeCache.txt directory /home/test/ecea5305/week3/build/CMakeCache.txt is different than the directory /home/test/ecea5305/week2/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/test/ecea5305/week3/CMakeLists.txt" does not match the source "/home/test/ecea5305/week2/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+-- Generating ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c
+-- Building executable including ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c and ../examples/autotest-validate/autotest-validate.c;../examples/threading/threading.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/test/ecea5305/week2/build
+[  7%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 15%] Built target unity
+[ 23%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 30%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 38%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 46%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls.c.o
+[ 46%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+[ 53%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 61%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 69%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls_Runner.c.o
+[ 76%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 84%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/systemcalls/systemcalls.c.o
+[ 92%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Built target assignment-autotest
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:58:test_exec_calls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_redirect_calls
+Remove trailing newline
+Read home is /home/test from testfile.txt
+execv /bin/sh -c echo home is $HOME returned home is /home/test
+Remove trailing newline
+Read home is $HOME from testfile.txt
+execv /bin/echo home is $HOME returned home is $HOME
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:72:test_exec_redirect_calls:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+CMake Error: The current CMakeCache.txt directory /home/test/ecea5305/week3/build/CMakeCache.txt is different than the directory /home/test/ecea5305/week2/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/test/ecea5305/week3/CMakeLists.txt" does not match the source "/home/test/ecea5305/week2/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+-- Generating ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c
+-- Building executable including ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c and ../examples/autotest-validate/autotest-validate.c;../examples/threading/threading.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/test/ecea5305/week2/build
+[  7%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 15%] Built target unity
+[ 23%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 30%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 38%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 46%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls.c.o
+[ 46%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+[ 53%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 61%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 69%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls_Runner.c.o
+[ 76%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 84%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/systemcalls/systemcalls.c.o
+[ 92%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Built target assignment-autotest
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:58:test_exec_calls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_redirect_calls
+Remove trailing newline
+Read home is /home/test from testfile.txt
+execv /bin/sh -c echo home is $HOME returned home is /home/test
+Remove trailing newline
+Read home is $HOME from testfile.txt
+execv /bin/echo home is $HOME returned home is $HOME
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:72:test_exec_redirect_calls:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK
+Test of assignment assignment4 complete with success
