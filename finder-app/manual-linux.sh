@@ -36,6 +36,7 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
 
     # TODO: Add your kernel build steps here
 <<<<<<< HEAD
+<<<<<<< HEAD
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- mrproper
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
     make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- all
@@ -43,9 +44,18 @@ if [ ! -e ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ]; then
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs
 =======
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- mrproper # Clean the kernel build tree
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig # For the "vir" arm dev board
+    make -j8 ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- all # build a kernel image for booting QEMU
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules # build any kernel modules
+    make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs # build the devicetree
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 fi
 
-echo "Adding the Image in outdir"
+echo "Adding the Image in outdir" # To linux-stable/arch/arm64/boot/Image??
+cp ${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image ${OUTDIR}/
 
 echo "Creating the staging directory for the root filesystem"
 cd "$OUTDIR"
@@ -56,6 +66,11 @@ then
 fi
 
 # TODO: Create necessary base directories
+mkdir -p rootfs
+cd rootfs
+mkdir -p bin dev etc home lib lib64 proc sbin sys tmp usr var 
+mkdir -p usr/bin usr/lib usr/sbin 
+mkdir -p  var/log 
 
 <<<<<<< HEAD
 mkdir -p rootfs
@@ -74,15 +89,22 @@ git clone git://busybox.net/busybox.git
     git checkout ${BUSYBOX_VERSION}
     # TODO:  Configure busybox
 <<<<<<< HEAD
+<<<<<<< HEAD
     make distclean
     make defconfig
 =======
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+    make distclean
+    make defconfig
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 else
     cd busybox
 fi
 
 # TODO: Make and install busybox
+<<<<<<< HEAD
 <<<<<<< HEAD
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} distclean
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
@@ -92,11 +114,21 @@ cd "${OUTDIR}/rootfs"
 
 =======
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} distclean
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} defconfig
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
+make CONFIG_PREFIX="$OUTDIR"/rootfs ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install
+cd "${OUTDIR}/rootfs"
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 
 echo "Library dependencies"
+# Need to change directories back to OUTDIR/rootfs
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
+<<<<<<< HEAD
 # TODO: Add library dependencies to rootfs
 
 <<<<<<< HEAD
@@ -120,13 +152,38 @@ make clean
 make CROSS_COMPILE=$CROSS_COMPILE
 
 =======
-# TODO: Make device nodes
+||||||| c93ab2a
+# TODO: Add library dependencies to rootfs
 
+=======
+# TODO: Add library dependencies to rootfs. Copy them over from sysroot
+export SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
+sudo cp -r $SYSROOT/lib64/* "${OUTDIR}/rootfs/lib64"
+sudo cp -r $SYSROOT/lib/* "${OUTDIR}/rootfs/lib"
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
+# TODO: Make device nodes
+# cd "${OUTDIR}"/rootfs
+sudo mknod -m 666 dev/null c 1 3
+sudo mknod -m 666 dev/console c 5 1 
+
+<<<<<<< HEAD
 # TODO: Clean and build the writer utility
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+# TODO: Clean and build the writer utility
+=======
+# TODO: Clean and build the writer utility in finder-app
+cd "$FINDER_APP_DIR"
+make clean
+make CROSS_COMPILE=$CROSS_COMPILE
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
+mkdir "$OUTDIR"/rootfs/home/conf
+cp finder.sh finder-test.sh writer autorun-qemu.sh "$OUTDIR"/rootfs/home
+cp conf/assignment.txt "$OUTDIR"/rootfs/home/conf
+cp conf/username.txt "$OUTDIR"/rootfs/home/conf
 
 <<<<<<< HEAD
 mkdir -p ${OUTDIR}/rootfs/home/conf
@@ -147,6 +204,15 @@ gzip -f ${OUTDIR}/initramfs.cpio
 
 =======
 # TODO: Chown the root directory
+cd "$OUTDIR"/rootfs
+sudo chown -R root:root *
 
 # TODO: Create initramfs.cpio.gz
+<<<<<<< HEAD
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+find . | cpio -H newc -ov --owner root:root > "$OUTDIR"/initramfs.cpio
+cd "$OUTDIR"
+gzip -f "$OUTDIR"/initramfs.cpio
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab

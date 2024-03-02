@@ -1,5 +1,6 @@
 #include "systemcalls.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <stdlib.h>
@@ -7,6 +8,14 @@
 #include <fcntl.h>
 =======
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 
 /**
  * @param cmd the command to execute with system()
@@ -25,6 +34,7 @@ bool do_system(const char *cmd)
  *   or false() if it returned a failure
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
     int returncode;
     returncode = system(cmd);
     if (returncode == -1){
@@ -36,6 +46,18 @@ bool do_system(const char *cmd)
 
     return true;
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+
+    return true;
+=======
+    int returncode;
+    returncode = system(cmd);
+    if (returncode == -1){
+        return false;
+    } else if (returncode == 0){
+	return true;
+    } else {exit(EXIT_SUCCESS);}   
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 }
 
 /**
@@ -77,6 +99,7 @@ bool do_exec(int count, ...)
  *
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
     pid_t process_id;
     int status;
     process_id = fork();
@@ -97,6 +120,27 @@ bool do_exec(int count, ...)
     else {return false;}
 =======
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+    pid_t process_id;
+    int status;
+    process_id = fork();
+    if(process_id == -1){ return false;} 
+    else if (process_id == 0){
+	    status = execv(command[0],command);
+	    if (status == -1){
+	    	exit(EXIT_FAILURE);
+	    }
+	    else {wait(&status);}
+    }
+    if (wait(&status) == -1){
+	    return false;
+    }
+    if (WIFEXITED(status)){ 
+	    if (WEXITSTATUS(status)){return false;}
+    }
+    else {return false;}
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 
     va_end(args);
 
@@ -132,6 +176,7 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     pid_t process_id;
     int status;
@@ -159,8 +204,40 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
     }
     close(fd);
 =======
+||||||| c93ab2a
+=======
+    
+    pid_t process_id;
+    int status;
+    int fd = open(outputfile, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+    if (fd <= 0) { perror("open"); abort(); }
+    switch (process_id = fork()){
+	case -1: return false;
+	case 0:
+		 if (dup2(fd, 1) < 0) { perror("dup2"); abort(); }
+		 close(fd);
+		 if( execv(command[0],command) == -1){
+    		 	close(fd); return false;	
+		 }
+		 int child_proc = execv(command[0],command);
+            	 if (child_proc == -1 || child_proc == 2){
+                 close(fd);return false;
+            	 }
+            	 else {close(fd); return true;}
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
 
+<<<<<<< HEAD
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+=======
+	default:
+		close(fd);
+    }
+    if (wait(&status) == -1){
+	    return false;
+    }
+    close(fd);
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
     va_end(args);
 
     return true;

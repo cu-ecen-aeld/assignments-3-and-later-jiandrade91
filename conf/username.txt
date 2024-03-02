@@ -1,5 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 jiandrade91
 =======
 your-github-username-here-in-conf-file
 >>>>>>> assignments-base/assignment4
+||||||| c93ab2a
+your-github-username-here-in-conf-file
+=======
+jiandrade91
+>>>>>>> fba2e58ad3d21857af7a1ed8df42a287a6ea3dab
