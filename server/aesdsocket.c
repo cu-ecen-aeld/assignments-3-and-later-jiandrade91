@@ -19,7 +19,6 @@
 //	-Restarts accepting connections from new clients forever in a loop intil SIGNINT or SIGTERM is received
 //	-Gracefully exits when SIGINT/SIGTERM is Rx, copmleting any operation, closing open sockets and deleting file from "/var/tmp/aesdsocketdata"
 //		Logs message to syslog "Caught signal, exiting" when SIGNINT/SIGTERM Rx
-//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
