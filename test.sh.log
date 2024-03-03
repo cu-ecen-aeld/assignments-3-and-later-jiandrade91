@@ -19265,3 +19265,147 @@ Cross compile is ...
 cc -c -o aesdsocket.o aesdsocket.c
 cc aesdsocket.o -o aesdsocket -lpthread -lrt
 ------- Successfully built --------
+Running test with user test
+CMake Error: The current CMakeCache.txt directory /home/test/ecea5305/week3/build/CMakeCache.txt is different than the directory /home/test/ecea5305/week2/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/test/ecea5305/week3/CMakeLists.txt" does not match the source "/home/test/ecea5305/week2/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+-- Generating ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c from test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c
+-- Building executable including ;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c;/home/test/ecea5305/week2/assignment-autotest/test/assignment4/Test_threading_Runner.c test/assignment1/Test_hello.c;test/assignment1/Test_assignment_validate.c;test/assignment4/Test_threading.c and ../examples/autotest-validate/autotest-validate.c;../examples/threading/threading.c
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/test/ecea5305/week2/build
+[  7%] Building C object assignment-autotest/Unity/src/CMakeFiles/unity.dir/unity.c.o
+[ 15%] Built target unity
+[ 23%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+Scanning dependencies of target assignment-autotest
+[ 30%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello.c.o
+[ 38%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate.c.o
+[ 46%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls.c.o
+[ 46%] Generating ../../assignment-autotest/test/assignment1/Test_hello_Runner.c, ../../assignment-autotest/test/assignment1/Test_assignment_validate_Runner.c, ../../assignment-autotest/test/assignment3/Test_systemcalls_Runner.c, ../../assignment-autotest/test/unity_runner.c
+Test files for auto dependency generation test/assignment1/Test_hello.c test/assignment1/Test_assignment_validate.c test/assignment3/Test_systemcalls.c
+Autogenerating runner for test/assignment1/Test_hello.c
+Autogenerating runner for test/assignment1/Test_assignment_validate.c
+Autogenerating runner for test/assignment3/Test_systemcalls.c
+Autogenerating test/unity_runner.c
+[ 53%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_hello_Runner.c.o
+[ 61%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment1/Test_assignment_validate_Runner.c.o
+[ 69%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/assignment3/Test_systemcalls_Runner.c.o
+[ 76%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/autotest-validate/autotest-validate.c.o
+[ 84%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/__/examples/systemcalls/systemcalls.c.o
+[ 92%] Building C object assignment-autotest/CMakeFiles/assignment-autotest.dir/test/unity_runner.c.o
+[100%] Built target assignment-autotest
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:6:test_hello:INFO: Hello!  Your unity setup is working!
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_hello.c:4:test_hello:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+/home/test/ecea5305/week2/assignment-autotest/test/assignment1/Test_assignment_validate.c:9:test_assignment_validate:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_systemcalls
+Remove trailing newline
+Read this is a test from testfile.txt
+system() echo this is a test returned this is a test
+Remove trailing newline
+Read home is /home/test from testfile.txt
+system() echo home is $HOME returned: home is /home/test
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:28:test_systemcalls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_calls
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:58:test_exec_calls:PASS
+Running tests at /home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c : function test_exec_redirect_calls
+Remove trailing newline
+Read home is /home/test from testfile.txt
+execv /bin/sh -c echo home is $HOME returned home is /home/test
+Remove trailing newline
+Read home is $HOME from testfile.txt
+execv /bin/echo home is $HOME returned home is $HOME
+/home/test/ecea5305/week2/assignment-autotest/test/assignment3/Test_systemcalls.c:72:test_exec_redirect_calls:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK
+Executing assignment test script
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+The main directory is .
+rm -rf ./aesdsocket.o aesdsocket
+Cross compile is ...
+cc -c -o aesdsocket.o aesdsocket.c
+cc aesdsocket.o -o aesdsocket -lpthread -lrt
+------- Successfully built --------
+Socket bind failed: Address already in use
+[0;31mValidation Error:starting aesdocket failed with 255[0m
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+Testing target localhost on port 9000
+sending string abcdefg to localhost on port 9000
+Differences found after sending abcdefg to localhost on port 9000
+Expected contents to match:
+abcdefg
+But found contents:
+With differences
+--- /tmp/tmp.W5BDe0xTfE	2024-03-03 13:24:47.399047835 -0800
++++ /tmp/tmp.taGX1YdZkh	2024-03-03 13:24:46.375081217 -0800
+@@ -1 +0,0 @@
+-abcdefg
+Test complete with failure
+[0;31mValidation Error:sockettest.sh returned 1 attempting to run against native compiled aesdsocket instance[0m
+~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+Waiting for aesdsocket application with pid 3496 to terminate
+Re-running sockettest.sh with valgrind
+~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+Waiting for aesdsocket application to start
+Starting valgrind
+script-helpers: line 505: valgrind: command not found
+Valgrind and aesdsocket complete
+[0;31mValidation Error:Valgrind failed with 127[0m
+Valgrind output error log:
+cat: valgrind-out.txt: No such file or directory
+deleting marker file /tmp/tmp.AwN6qXs12U
+~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3/server ~/ecea5305/week3/assignment-autotest/test/assignment5 ~/ecea5305/week3
+Testing target localhost on port 9000
+sending string abcdefg to localhost on port 9000
+Differences found after sending abcdefg to localhost on port 9000
+Expected contents to match:
+abcdefg
+But found contents:
+With differences
+--- /tmp/tmp.igW2oo5GZD	2024-03-03 13:24:51.482914577 -0800
++++ /tmp/tmp.rPbDLc4hvR	2024-03-03 13:24:50.454948117 -0800
+@@ -1 +0,0 @@
+-abcdefg
+Test complete with failure
+[0;31mValidation Error:sockettest.sh returned 1 attempting to run against native compiled aesdsocket instance running under valgrind[0m
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+Stopping valgrind and aesdsocket process at pid 
+Validation failed with error list :starting aesdocket failed with 255:sockettest.sh returned 1 attempting to run against native compiled aesdsocket instance:sockettest.sh returned 1 attempting to run against native compiled aesdsocket instance running under valgrind
+Test of assignment assignment5 failed with rc=1
